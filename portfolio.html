@@ -1,0 +1,492 @@
+portf<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | Grand Junction Web Designs</title>
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #ffffff;
+            background-color: #0a1628;
+        }
+
+        /* Header and Navigation */
+        header {
+            background-color: #0a1628;
+            padding: 1rem 0;
+            border-bottom: 2px solid #ff6b35;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .logo-text {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #ffffff;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+            padding: 0.5rem 0;
+        }
+
+        nav a:hover {
+            color: #ff6b35;
+        }
+
+        nav a.active {
+            color: #ff6b35;
+            border-bottom: 2px solid #ff6b35;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 4rem 0;
+            text-align: center;
+            background: linear-gradient(135deg, #0a1628 0%, #1a2940 100%);
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+            color: #ffffff;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #cbd5e0;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Portfolio Grid */
+        .portfolio-section {
+            padding: 4rem 0;
+            background-color: #0f1f38;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 3rem;
+            color: #ffffff;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .portfolio-card {
+            background-color: #1a2940;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .portfolio-card:hover {
+            transform: translateY(-10px);
+            border-color: #ff6b35;
+            box-shadow: 0 15px 40px rgba(255, 107, 53, 0.3);
+        }
+
+        .portfolio-image {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(135deg, #ff6b35 0%, #ffa07a 50%, #ff8c42 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .portfolio-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(10, 22, 40, 0.1);
+        }
+
+        .portfolio-content {
+            padding: 2rem;
+        }
+
+        .portfolio-category {
+            display: inline-block;
+            background-color: #ff6b35;
+            color: #ffffff;
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .portfolio-content h3 {
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+            color: #ffffff;
+        }
+
+        .portfolio-content p {
+            color: #cbd5e0;
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .portfolio-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-tag {
+            background-color: #0f1f38;
+            color: #cbd5e0;
+            padding: 0.4rem 0.8rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: #ff6b35;
+            border: 2px solid #ff6b35;
+        }
+
+        .btn-secondary:hover {
+            background-color: #ff6b35;
+            color: #ffffff;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 4rem 0;
+            background-color: #0a1628;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+            color: #ffffff;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            color: #cbd5e0;
+            margin-bottom: 2rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn-primary {
+            background-color: #ff6b35;
+            color: #ffffff;
+        }
+
+        .btn-primary:hover {
+            background-color: #e55a28;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 107, 53, 0.4);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #050d1a;
+            padding: 3rem 0 1rem;
+            border-top: 2px solid #ff6b35;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            color: #ff6b35;
+            margin-bottom: 1rem;
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: #cbd5e0;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a:hover {
+            color: #ff6b35;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #1a2940;
+            color: #cbd5e0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            nav ul {
+                gap: 1rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-container">
+                    <svg width="50" height="50" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <polygon points="20,70 35,40 50,55 65,30 80,70" fill="#ff6b35"/>
+                        <path d="M 10,75 Q 30,80 50,75 T 90,75" stroke="#ffffff" stroke-width="3" fill="none"/>
+                        <rect x="0" y="75" width="100" height="25" fill="#1a2940"/>
+                    </svg>
+                    <span class="logo-text">GJWD</span>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="portfolio.html" class="active">Portfolio</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Our Work for Grand Junction Businesses</h1>
+            <p>Real websites for real local businesses. See examples of the clean, professional sites we create to help businesses grow.</p>
+        </div>
+    </section>
+
+    <!-- Portfolio Grid -->
+    <section class="portfolio-section">
+        <div class="container">
+            <h2 class="section-title">Example Website Designs</h2>
+            <div class="portfolio-grid">
+                <!-- Nail Salon -->
+                <div class="portfolio-card">
+                    <div class="portfolio-image">💅</div>
+                    <div class="portfolio-content">
+                        <span class="portfolio-category">Beauty & Wellness</span>
+                        <h3>Luxury Nails & Spa</h3>
+                        <p>Elegant website for a high-end nail salon featuring service menu, pricing gallery, online booking integration, and mobile-optimized design for busy clients on the go.</p>
+                        <div class="portfolio-features">
+                            <span class="feature-tag">5 Pages</span>
+                            <span class="feature-tag">Photo Gallery</span>
+                            <span class="feature-tag">Booking System</span>
+                            <span class="feature-tag">Mobile First</span>
+                        </div>
+                        <a href="contact.html" class="btn btn-secondary">Request Similar</a>
+                    </div>
+                </div>
+
+                <!-- Pet Groomer -->
+                <div class="portfolio-card">
+                    <div class="portfolio-image">🐕</div>
+                    <div class="portfolio-content">
+                        <span class="portfolio-category">Pet Services</span>
+                        <h3>Pampered Paws Grooming</h3>
+                        <p>Friendly, approachable website for a local pet grooming business. Features before/after gallery, service packages, appointment scheduling, and pet care tips blog.</p>
+                        <div class="portfolio-features">
+                            <span class="feature-tag">5 Pages</span>
+                            <span class="feature-tag">Image Gallery</span>
+                            <span class="feature-tag">Contact Forms</span>
+                            <span class="feature-tag">Fast Loading</span>
+                        </div>
+                        <a href="contact.html" class="btn btn-secondary">Request Similar</a>
+                    </div>
+                </div>
+
+                <!-- Landscaper -->
+                <div class="portfolio-card">
+                    <div class="portfolio-image">🌳</div>
+                    <div class="portfolio-content">
+                        <span class="portfolio-category">Home Services</span>
+                        <h3>GJ Landscaping & Design</h3>
+                        <p>Professional landscaping website showcasing completed projects, seasonal services, and customer testimonials. Includes quote request form and service area map.</p>
+                        <div class="portfolio-features">
+                            <span class="feature-tag">5 Pages</span>
+                            <span class="feature-tag">Portfolio Gallery</span>
+                            <span class="feature-tag">Quote Form</span>
+                            <span class="feature-tag">SEO Optimized</span>
+                        </div>
+                        <a href="contact.html" class="btn btn-secondary">Request Similar</a>
+                    </div>
+                </div>
+
+                <!-- Car Detailer -->
+                <div class="portfolio-card">
+                    <div class="portfolio-image">🚗</div>
+                    <div class="portfolio-content">
+                        <span class="portfolio-category">Automotive</span>
+                        <h3>Shine On Auto Detailing</h3>
+                        <p>Sleek auto detailing website featuring service packages, pricing tiers, before/after transformations, and easy online booking for both interior and exterior services.</p>
+                        <div class="portfolio-features">
+                            <span class="feature-tag">4 Pages</span>
+                            <span class="feature-tag">Package Pricing</span>
+                            <span class="feature-tag">Online Booking</span>
+                            <span class="feature-tag">Mobile Ready</span>
+                        </div>
+                        <a href="contact.html" class="btn btn-secondary">Request Similar</a>
+                    </div>
+                </div>
+
+                <!-- Laundromat -->
+                <div class="portfolio-card">
+                    <div class="portfolio-image">🧺</div>
+                    <div class="portfolio-content">
+                        <span class="portfolio-category">Service Business</span>
+                        <h3>Clean & Fresh Laundry</h3>
+                        <p>Modern laundromat website with hours, pricing, location info, and amenities. Features loyalty program info, wash-and-fold services, and real-time availability updates.</p>
+                        <div class="portfolio-features">
+                            <span class="feature-tag">3 Pages</span>
+                            <span class="feature-tag">Service Hours</span>
+                            <span class="feature-tag">Location Map</span>
+                            <span class="feature-tag">Quick Load</span>
+                        </div>
+                        <a href="contact.html" class="btn btn-secondary">Request Similar</a>
+                    </div>
+                </div>
+
+                <!-- Restaurant -->
+                <div class="portfolio-card">
+                    <div class="portfolio-image">🍽️</div>
+                    <div class="portfolio-content">
+                        <span class="portfolio-category">Restaurant</span>
+                        <h3>Mesa View Bistro</h3>
+                        <p>Beautiful restaurant website featuring full menu with photos, online ordering integration, reservation system, special events calendar, and chef's story.</p>
+                        <div class="portfolio-features">
+                            <span class="feature-tag">6 Pages</span>
+                            <span class="feature-tag">Menu Display</span>
+                            <span class="feature-tag">Online Orders</span>
+                            <span class="feature-tag">Reservations</span>
+                        </div>
+                        <a href="contact.html" class="btn btn-secondary">Request Similar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Ready to See Your Business Online?</h2>
+            <p>Let us create a custom website preview for your business. No obligation - just a professional demo showing what your site could look like.</p>
+            <a href="contact.html" class="btn btn-primary">Request a Custom Preview</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Grand Junction Web Designs</h3>
+                    <p>Local Websites That Get Customers</p>
+                    <p>Grand Junction, Colorado</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <p>Phone: 970-462-2287</p>
+                    <p>Email: support@grandjunctionwebdesigns.com</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <a href="index.html">Home</a>
+                    <a href="services.html">Services</a>
+                    <a href="portfolio.html">Portfolio</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Grand Junction Web Designs. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
+
