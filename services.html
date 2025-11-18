@@ -1,1 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services | Grand Junction Web Designs</title>
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #ffffff;
+            background-color: #0a1628;
+        }
+
+        /* Header and Navigation */
+        header {
+            background-color: #0a1628;
+            padding: 1rem 0;
+            border-bottom: 2px solid #ff6b35;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .logo-text {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #ffffff;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+            padding: 0.5rem 0;
+        }
+
+        nav a:hover {
+            color: #ff6b35;
+        }
+
+        nav a.active {
+            color: #ff6b35;
+            border-bottom: 2px solid #ff6b35;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 4rem 0;
+            text-align: center;
+            background: linear-gradient(135deg, #0a1628 0%, #1a2940 100%);
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+            color: #ffffff;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #cbd5e0;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Services List */
+        .services-section {
+            padding: 4rem 0;
+            background-color: #0f1f38;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 3rem;
+            color: #ffffff;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .service-card {
+            background-color: #1a2940;
+            padding: 2.5rem;
+            border-radius: 8px;
+            border-left: 4px solid #ff6b35;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.2);
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+            color: #ff6b35;
+        }
+
+        .service-card p {
+            color: #cbd5e0;
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        .service-price {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-top: 1rem;
+        }
+
+        /* Pricing Table */
+        .pricing-section {
+            padding: 4rem 0;
+            background-color: #0a1628;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .pricing-card {
+            background-color: #1a2940;
+            padding: 2.5rem;
+            border-radius: 8px;
+            text-align: center;
+            transition: transform 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .pricing-card.featured {
+            border: 3px solid #ff6b35;
+            transform: scale(1.05);
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .pricing-card.featured:hover {
+            transform: translateY(-5px) scale(1.05);
+        }
+
+        .pricing-badge {
+            background-color: #ff6b35;
+            color: #ffffff;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+
+        .pricing-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #ffffff;
+        }
+
+        .pricing-card .price {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #ff6b35;
+            margin-bottom: 0.5rem;
+        }
+
+        .pricing-card .period {
+            color: #cbd5e0;
+            margin-bottom: 2rem;
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin-bottom: 2rem;
+            text-align: left;
+        }
+
+        .pricing-features li {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid #2d3e56;
+            color: #cbd5e0;
+        }
+
+        .pricing-features li:before {
+            content: "✓ ";
+            color: #ff6b35;
+            font-weight: 700;
+            margin-right: 0.5rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .btn-primary {
+            background-color: #ff6b35;
+            color: #ffffff;
+        }
+
+        .btn-primary:hover {
+            background-color: #e55a28;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 107, 53, 0.4);
+        }
+
+        /* What's Included Section */
+        .included-section {
+            padding: 4rem 0;
+            background-color: #0f1f38;
+        }
+
+        .included-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .included-item {
+            background-color: #1a2940;
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .included-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .included-item h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: #ff6b35;
+        }
+
+        .included-item p {
+            color: #cbd5e0;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 4rem 0;
+            background-color: #0a1628;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            color: #cbd5e0;
+            margin-bottom: 2rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #050d1a;
+            padding: 3rem 0 1rem;
+            border-top: 2px solid #ff6b35;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            color: #ff6b35;
+            margin-bottom: 1rem;
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: #cbd5e0;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a:hover {
+            color: #ff6b35;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #1a2940;
+            color: #cbd5e0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            nav ul {
+                gap: 1rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .pricing-card.featured {
+                transform: scale(1);
+            }
+
+            .pricing-card.featured:hover {
+                transform: translateY(-5px) scale(1);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-container">
+                    <svg width="50" height="50" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <polygon points="20,70 35,40 50,55 65,30 80,70" fill="#ff6b35"/>
+                        <path d="M 10,75 Q 30,80 50,75 T 90,75" stroke="#ffffff" stroke-width="3" fill="none"/>
+                        <rect x="0" y="75" width="100" height="25" fill="#1a2940"/>
+                    </svg>
+                    <span class="logo-text">GJWD</span>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="services.html" class="active">Services</a></li>
+                        <li><a href="portfolio.html">Portfolio</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Website Services for Local Businesses</h1>
+            <p>Professional, fast-loading websites designed to get you more customers. No complicated packages. Just quality work at fair prices.</p>
+        </div>
+    </section>
+
+    <!-- Services List -->
+    <section class="services-section">
+        <div class="container">
+            <h2 class="section-title">Our Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🚀</div>
+                    <h3>One-Page Websites</h3>
+                    <p>Perfect for service businesses that need a simple, focused online presence. Includes hero section, services overview, contact form, and mobile optimization.</p>
+                    <p>Ideal for contractors, consultants, and service providers.</p>
+                    <div class="service-price">Starting at $199</div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">🎯</div>
+                    <h3>Multi-Page Websites</h3>
+                    <p>Complete 5-page website with Home, About, Services, Gallery/Portfolio, and Contact pages. Perfect for established businesses that need comprehensive web presence.</p>
+                    <p>Great for restaurants, retail shops, and professional services.</p>
+                    <div class="service-price">Starting at $299</div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">⚡</div>
+                    <h3>Fast Turnaround</h3>
+                    <p>Need a website quickly? We can deliver a professional, fully-functional website in as little as 3-5 business days. Rush service available for urgent needs.</p>
+                    <p>Get online fast without sacrificing quality.</p>
+                    <div class="service-price">1 week standard</div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">🔧</div>
+                    <h3>Hosting Setup</h3>
+                    <p>We handle all the technical details - domain setup, hosting configuration, SSL certificates, and email setup. You get a turnkey website ready to go.</p>
+                    <p>No technical knowledge required.</p>
+                    <div class="service-price">Included</div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">📈</div>
+                    <h3>Basic SEO Setup</h3>
+                    <p>Every website includes fundamental SEO optimization - proper title tags, meta descriptions, mobile optimization, fast loading speeds, and local business schema.</p>
+                    <p>Help customers find you on Google.</p>
+                    <div class="service-price">Included</div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">🔄</div>
+                    <h3>Revisions & Updates</h3>
+                    <p>Your satisfaction matters. We include reasonable revisions during development and offer affordable update packages to keep your site fresh and current.</p>
+                    <p>Your site grows with your business.</p>
+                    <div class="service-price">Free revisions</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Table -->
+    <section class="pricing-section">
+        <div class="container">
+            <h2 class="section-title">Simple, Transparent Pricing</h2>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3>Starter</h3>
+                    <div class="price">$199</div>
+                    <div class="period">One-Time Payment</div>
+                    <ul class="pricing-features">
+                        <li>1-page website</li>
+                        <li>Mobile responsive</li>
+                        <li>Contact form</li>
+                        <li>Basic SEO</li>
+                        <li>1 round of revisions</li>
+                        <li>5 day delivery</li>
+                    </ul>
+                    <a href="contact.html" class="btn btn-primary">Get Started</a>
+                </div>
+
+                <div class="pricing-card featured">
+                    <div class="pricing-badge">MOST POPULAR</div>
+                    <h3>Professional</h3>
+                    <div class="price">$299</div>
+                    <div class="period">One-Time Payment</div>
+                    <ul class="pricing-features">
+                        <li>5-page website</li>
+                        <li>Mobile responsive</li>
+                        <li>Contact form</li>
+                        <li>Advanced SEO</li>
+                        <li>2 rounds of revisions</li>
+                        <li>7 day delivery</li>
+                        <li>Google Maps integration</li>
+                    </ul>
+                    <a href="contact.html" class="btn btn-primary">Get Started</a>
+                </div>
+
+                <div class="pricing-card">
+                    <h3>Custom</h3>
+                    <div class="price">Custom</div>
+                    <div class="period">Quote Based</div>
+                    <ul class="pricing-features">
+                        <li>Unlimited pages</li>
+                        <li>Custom features</li>
+                        <li>E-commerce integration</li>
+                        <li>Advanced functionality</li>
+                        <li>Priority support</li>
+                        <li>Flexible timeline</li>
+                    </ul>
+                    <a href="contact.html" class="btn btn-primary">Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What's Included -->
+    <section class="included-section">
+        <div class="container">
+            <h2 class="section-title">What's Included In Every Website</h2>
+            <div class="included-grid">
+                <div class="included-item">
+                    <div class="included-icon">📱</div>
+                    <h3>Mobile First</h3>
+                    <p>Designed for phones first, perfect on all devices</p>
+                </div>
+                <div class="included-item">
+                    <div class="included-icon">⚡</div>
+                    <h3>Lightning Fast</h3>
+                    <p>Optimized for speed - loads in under 2 seconds</p>
+                </div>
+                <div class="included-item">
+                    <div class="included-icon">🔒</div>
+                    <h3>Secure & Safe</h3>
+                    <p>SSL certificate and security best practices</p>
+                </div>
+                <div class="included-item">
+                    <div class="included-icon">🎨</div>
+                    <h3>Custom Design</h3>
+                    <p>Unique design tailored to your brand</p>
+                </div>
+                <div class="included-item">
+                    <div class="included-icon">📞</div>
+                    <h3>Contact Forms</h3>
+                    <p>Easy ways for customers to reach you</p>
+                </div>
+                <div class="included-item">
+                    <div class="included-icon">🔍</div>
+                    <h3>SEO Ready</h3>
+                    <p>Optimized to be found on Google searches</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Ready to Get Your Website?</h2>
+            <p>Let's build something great together. Contact us today for a free consultation.</p>
+            <a href="contact.html" class="btn btn-primary">Get Started Now</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Grand Junction Web Designs</h3>
+                    <p>Local Websites That Get Customers</p>
+                    <p>Grand Junction, Colorado</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <p>Phone: 970-462-2287</p>
+                    <p>Email: support@grandjunctionwebdesigns.com</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <a href="index.html">Home</a>
+                    <a href="services.html">Services</a>
+                    <a href="portfolio.html">Portfolio</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Grand Junction Web Designs. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
+
 
